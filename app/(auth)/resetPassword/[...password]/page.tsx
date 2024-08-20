@@ -7,6 +7,7 @@ import FormInput from "@/components/form/input";
 import axios from "axios";
 import { Undo2 } from "lucide-react";
 import Link from "next/link";
+import { api_url } from '@/app/utils/api/api_url';
 
 const ResetPasswordPage = () => {
   const router = useRouter();
@@ -53,7 +54,7 @@ const ResetPasswordPage = () => {
     console.log('Formdata : ', formData);
 
     try {
-      const res = await axios.post(`{api_url}/password/reset', formData, {
+      const res = await axios.post(`${api_url}/password/reset`, formData, {
         headers: {
           "Content-Type": "application/json",
         },
