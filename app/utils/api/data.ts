@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query"
 import { ChangeEvent } from "react"
 import { Hackathon, ParticipantsResponse } from "../definitions";
+import { api_url } from "./api_url";
 let authToken = null;
 if (typeof window !== "undefined") {
     authToken = localStorage.getItem('authToken');
@@ -15,7 +16,7 @@ export const getHackathons = async () => {
         }
     };
     try {
-        const response = await fetch('https://api.jeemacoder.fewnu.app/api/hackathons', options);
+        const response = await fetch(`${api_url}/hackathons`, options);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -37,7 +38,7 @@ export const getHackathonsByHackathonsId = async (hackathonId : string) => {
         }
     };
     try {
-        const response = await fetch(`https://api.jeemacoder.fewnu.app/api/hackathons/organisateur/hackathon/${hackathonId}`, options);
+        const response = await fetch(`${api_url}/hackathons/organisateur/hackathon/${hackathonId}`, options);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -59,7 +60,7 @@ export const getHackathonsByOrganisateurId = async (organisateur_id : string) =>
         }
     };
     try {
-        const response = await fetch(`https://api.jeemacoder.fewnu.app/api/hackathons/organisateur/${organisateur_id}`, options);
+        const response = await fetch(`${api_url}/hackathons/organisateur/${organisateur_id}`, options);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -81,7 +82,7 @@ export const getHackathonById = async (hackathonId : string) => {
         }
     };
     try {
-        const response = await fetch(`https://api.jeemacoder.fewnu.app/api/hackathons/${hackathonId}` , options)
+        const response = await fetch(`${api_url}/hackathons/${hackathonId}` , options)
         const data = await response.json()
         // console.log("details : " , response.json());
         
@@ -100,7 +101,7 @@ export const getTags = async ( hackathonId : string) => {
         }}
 
         try{
-            const response = await fetch(`https://api.jeemacoder.fewnu.app/api/tag/all/${hackathonId}` , options)
+            const response = await fetch(`${api_url}/tag/all/${hackathonId}` , options)
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
@@ -113,7 +114,7 @@ export const getTags = async ( hackathonId : string) => {
 }
 
 export const updateHackathon = async (id: string, updatedData: Partial<Hackathon>) => {
-    const response = await fetch(`https://api.jeemacoder.fewnu.app/api/hackathons/update/${id}`, {
+    const response = await fetch(`${api_url}/hackathons/update/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -132,7 +133,7 @@ export const updateHackathon = async (id: string, updatedData: Partial<Hackathon
 export const getParticipants = async (hackathonId: string): Promise<ParticipantsResponse> => {
     try {
         // Requête pour récupérer les participants individuels
-        const indivResponse = await fetch(`https://api.jeemacoder.fewnu.app/api/indiv/index/${hackathonId}`, {
+        const indivResponse = await fetch(`${api_url}/indiv/index/${hackathonId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -151,7 +152,7 @@ export const getParticipants = async (hackathonId: string): Promise<Participants
         }
 
         // Requête pour récupérer les équipes
-        const equipeResponse = await fetch(`https://api.jeemacoder.fewnu.app/api/equipe/index/${hackathonId}`, {
+        const equipeResponse = await fetch(`${api_url}/equipe/index/${hackathonId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -187,7 +188,7 @@ export const getParticipants = async (hackathonId: string): Promise<Participants
 
 
 export const approveParticipant = async (id: string) => {
-    const response = await fetch(`https://api.jeemacoder.fewnu.app/api/indiv/approuver/${id}`, {
+    const response = await fetch(`${api_url}/indiv/approuver/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -204,7 +205,7 @@ export const approveParticipant = async (id: string) => {
 
 // Fonction pour rejeter un participant
 export const rejectParticipant = async (id: string) => {
-    const response = await fetch(`https://api.jeemacoder.fewnu.app/api/indiv/rejeter/${id}`, {
+    const response = await fetch(`${api_url}/indiv/rejeter/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -220,7 +221,7 @@ export const rejectParticipant = async (id: string) => {
 };
 
 export const approveParticipantEquipe = async (id: string) => {
-    const response = await fetch(`https://api.jeemacoder.fewnu.app/api/equipe/approuver/${id}`, {
+    const response = await fetch(`${api_url}/equipe/approuver/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -236,7 +237,7 @@ export const approveParticipantEquipe = async (id: string) => {
 };
 
 export const rejectParticipantEquipe = async (id: string) => {
-    const response = await fetch(`https://api.jeemacoder.fewnu.app/api/equipe/rejete/${id}`, {
+    const response = await fetch(`${api_url}/equipe/rejete/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -262,7 +263,7 @@ export const createWorkspace = async (name: string, type_espace: string, equipe_
         body: JSON.stringify({ name, type_espace, equipe_id }),
     };
     try {
-        const response = await fetch(`https://api.jeemacoder.fewnu.app/api/workspace/add`, options);
+        const response = await fetch(`${api_url}/workspace/add`, options);
         if (!response.ok) {
             const errorText = await response.text(); // Lire le texte de la réponse d'erreur
             throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorText}`);

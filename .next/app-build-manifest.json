@@ -15,6 +15,52 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
+    ],
+    "/(auth)/login/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(auth)/login/page.js"
+    ],
+    "/_not-found/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/_not-found/page.js"
+    ],
+    "/(auth)/register/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(auth)/register/page.js"
+    ],
+    "/(organisateur)/dashboard/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(organisateur)/dashboard/page.js"
+    ],
+    "/(organisateur)/dashboard/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(organisateur)/dashboard/layout.css",
+      "static/chunks/app/(organisateur)/dashboard/layout.js"
+    ],
+    "/(participants)/espaceParticipant/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(participants)/espaceParticipant/page.js"
+    ],
+    "/(participants)/espaceParticipant/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(participants)/espaceParticipant/layout.js"
+    ],
+    "/(organisateur)/dashboard/mes-hackatons/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(organisateur)/dashboard/mes-hackatons/page.js"
+    ],
+    "/(organisateur)/dashboard/mes-hackatons/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(organisateur)/dashboard/mes-hackatons/layout.js"
     ]
   }
 }

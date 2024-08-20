@@ -23,7 +23,7 @@ const [value , setValue ] = useState<Value>({
         }
     const mutation = useMutation({
         mutationFn: async(formData : BodyInit) => {
-            return await fetch('https://api.jeemacoder.fewnu.app/api/tag/add' , {
+            return await fetch(`{api_url}/tag/add' , {
             method : 'POST',
             headers : {
                 "authorization" : `Bearer ${authToken}`

@@ -1,3 +1,4 @@
+import { api_url } from "./api_url";
 
 
 let authToken = null;
@@ -13,7 +14,7 @@ export const getUserHackathon = async (Hackathon_id : string) => {
         }
     };
     try {
-        const response = await fetch(`https://api.jeemacoder.fewnu.app/api/hackathon/recup/${Hackathon_id}`, options);
+        const response = await fetch(`${api_url}/hackathon/recup/${Hackathon_id}`, options);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -35,7 +36,7 @@ export const getUserIndividuel = async (Individuel_id : string) => {
         }
     };
     try {
-        const response = await fetch(`https://api.jeemacoder.fewnu.app/api/hackathon/recup/by_user_id/${Individuel_id}`, options);
+        const response = await fetch(`${api_url}/hackathon/recup/by_user_id/${Individuel_id}`, options);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -49,7 +50,7 @@ export const getUserIndividuel = async (Individuel_id : string) => {
 };
 export const getCurrentCreatedEquipe = async () => {
     try {
-        const response = await fetch('https://api.jeemacoder.fewnu.app/api/equipe/indexByEquipeDesc', {
+        const response = await fetch(`${api_url}/equipe/indexByEquipeDesc`, {
             method: 'POST',
             headers : {
                 "Authorisation" : `Bearer ${authToken}`
@@ -72,7 +73,7 @@ export const sendMessage = async (Workspace_id : string) => {
         }
     };
     try {
-        const response = await fetch(`https://api.jeemacoder.fewnu.app/api/sendMessage_in/${Workspace_id}`, options);
+        const response = await fetch(`${api_url}/sendMessage_in/${Workspace_id}`, options);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -94,7 +95,7 @@ export const getAllMessageByWorkspaceId = async (Workspace_id : string) => {
         }
     };
     try {
-        const response = await fetch(`https://api.jeemacoder.fewnu.app/api/all_messages/${Workspace_id}`, options);
+        const response = await fetch(`${api_url}/all_messages/${Workspace_id}`, options);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }

@@ -1,4 +1,5 @@
 "use client";
+import { api_url } from "@/app/utils/api/api_url";
 import { Button } from "@/components/form/button";
 import FormInput from "@/components/form/input";
 import axios from "axios";
@@ -27,7 +28,7 @@ export default function RequestResetPasswordPage() {
     setSuccess(null);
 
     try {
-      const res = await axios.post('https://api.jeemacoder.fewnu.app/api/forget/email', { email: value.email }, {
+      const res = await axios.post(`${api_url}/forget/email`, { email: value.email }, {
         headers: {
           "Content-Type": "application/json",
         },
