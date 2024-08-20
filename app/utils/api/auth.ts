@@ -1,3 +1,5 @@
+import { api_url } from "./api_url";
+
 let authToken = null;
 if (typeof window !== "undefined") {
     authToken = localStorage.getItem('authToken');
@@ -12,7 +14,7 @@ export const getUser = async () => {
                     "Authorization" : `Bearer ${authToken}`
                 }
             }
-        const response = fetch('https://api.jeemacoder.fewnu.app/api/user' , options)
+        const response = fetch(`${api_url}/user` , options)
             .then(response => response.json())
             .catch(err => console.log("failed fecthing user",err))
 

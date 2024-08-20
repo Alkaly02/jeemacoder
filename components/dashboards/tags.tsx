@@ -5,6 +5,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { getTags } from "@/app/utils/api/data";
 import { ListItem } from "../regular_list";
 import { TagElement } from "./hackthon-card";
+import { api_url } from "@/app/utils/api/api_url";
 
 let authToken: string | null = null;
 if (typeof window !== "undefined") {
@@ -23,7 +24,7 @@ const [value , setValue ] = useState<Value>({
         }
     const mutation = useMutation({
         mutationFn: async(formData : BodyInit) => {
-            return await fetch('https://api.jeemacoder.fewnu.app/api/tag/add' , {
+            return await fetch(`${api_url}/tag/add` , {
             method : 'POST',
             headers : {
                 "authorization" : `Bearer ${authToken}`

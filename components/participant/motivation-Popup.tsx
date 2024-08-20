@@ -7,6 +7,7 @@ import { XIcon } from "lucide-react";
 import { UserContext } from "@/app/utils/context";
 import { User } from "@/app/utils/definitions";
 import { getCurrentCreatedEquipe } from "@/app/utils/api/dataParticipant";
+import { api_url } from "@/app/utils/api/api_url";
 
 let authToken: string | null = null;
 if (typeof window !== "undefined") {
@@ -24,7 +25,7 @@ if (typeof window !== "undefined") {
 
 const mutation = useMutation({
     mutationFn : async (formData : BodyInit) => {
-        return await fetch( !equipeDeja ? 'https://api.jeemacoder.fewnu.app/api/indiv/create' : "https://api.jeemacoder.fewnu.app/api/equipe/create" , {
+        return await fetch( !equipeDeja ? `${api_url}/api/indiv/create` : `${api_url}/equipe/create` , {
             method : 'POST',
             headers : {
                 "Contente-type" : "Application/json",
@@ -48,7 +49,7 @@ console.log("equipe id", typeof(data));
 
 const mutationMenbreEquipe = useMutation({
     mutationFn : async (formData : BodyInit) => {
-        return await fetch("https://api.jeemacoder.fewnu.app/api/membre/add" , {
+        return await fetch(`${api_url}/membre/add` , {
             method : 'POST',
             headers : {
                 "Contente-type" : "Application/json",

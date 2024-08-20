@@ -1,4 +1,5 @@
 "use client";
+import { api_url } from "@/app/utils/api/api_url";
 import { Button } from "@/components/form/button";
 import FormInput from "@/components/form/input";
 import axios from "axios";
@@ -7,8 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
-const api_url = process.env.NEXT_PUBLIC_BACKEND_URL;
-console.log(`${api_url}/api/login`);
+
 
 
 type Value = {
@@ -23,6 +23,7 @@ export default function Page() {
     password : '',
     remember : false
   })
+  
 
   const [error , setError] = useState<{[key : string]: string}>({})
   console.log(error);
@@ -42,7 +43,7 @@ export default function Page() {
     };
 
     try {
-      const res = await axios.post(`${api_url}/api/login`, formData, {
+      const res = await axios.post(`${api_url}/login`, formData, {
         headers: {
           "Content-Type": "application/json",
         },
