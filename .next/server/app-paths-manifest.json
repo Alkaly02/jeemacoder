@@ -1,8 +1,5 @@
 {
-  "/(auth)/login/page": "app/(auth)/login/page.js",
-  "/listhackathons/[...details]/page": "app/listhackathons/[...details]/page.js",
   "/page": "app/page.js",
-  "/(auth)/user_role/page": "app/(auth)/user_role/page.js",
-  "/(auth)/register/page": "app/(auth)/register/page.js",
-  "/_not-found/page": "app/_not-found/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/(auth)/login/page": "app/(auth)/login/page.js"
 }
