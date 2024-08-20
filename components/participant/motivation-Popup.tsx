@@ -1,9 +1,12 @@
 "use client"
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent, useContext, useState } from "react"
 import { Button } from "../button"
 import { useRouter } from "next/navigation";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { XIcon } from "lucide-react";
+import { UserContext } from "@/app/utils/context";
+import { User } from "@/app/utils/definitions";
+import { getCurrentCreatedEquipe } from "@/app/utils/api/dataParticipant";
 
 let authToken: string | null = null;
 if (typeof window !== "undefined") {
@@ -18,6 +21,7 @@ if (typeof window !== "undefined") {
       const [equipeName , setEquipeName ] = useState('')
 
       const router = useRouter()
+
 const mutation = useMutation({
     mutationFn : async (formData : BodyInit) => {
         return await fetch( !equipeDeja ? 'https://api.jeemacoder.fewnu.app/api/indiv/create' : "https://api.jeemacoder.fewnu.app/api/equipe/create" , {
@@ -36,6 +40,12 @@ const mutation = useMutation({
         setEquipeName('')
     }
 })
+const {data, isLoading, isError} = useQuery({
+    queryFn: async () => await getCurrentCreatedEquipe(),
+    queryKey: ['equipeId']
+})
+console.log("equipe id", typeof(data));
+
 const mutationMenbreEquipe = useMutation({
     mutationFn : async (formData : BodyInit) => {
         return await fetch("https://api.jeemacoder.fewnu.app/api/membre/add" , {
@@ -54,7 +64,7 @@ const mutationMenbreEquipe = useMutation({
         setEquipeName('')
     }
 })
-
+const user: User | null = useContext(UserContext)
 const handleSubmit = (e : ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData() ;
@@ -68,7 +78,7 @@ const handleSubmit = (e : ChangeEvent<HTMLFormElement>) => {
             }
             
             formDataMenbreEquipe.append('type_member' , 'chef')
-            formDataMenbreEquipe.append('equipe_id' , "1")
+            formDataMenbreEquipe.append('equipe_id' , JSON.stringify(user?.id))
 
             mutation.mutate( formData )
             mutationMenbreEquipe.mutate(formDataMenbreEquipe)

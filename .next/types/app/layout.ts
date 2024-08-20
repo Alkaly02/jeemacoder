@@ -1,4 +1,4 @@
-// File: E:\Bakeli\Projet\JeemaCoder\app\jeemacoder-app\jeemacoder-web\app\layout.tsx
+// File: C:\Users\admin\Desktop\Bakeli-project\jeemacoder\app\layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -40,13 +40,28 @@ export const getUserIndividuel = async (Individuel_id : string) => {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        console.log('hackathons:', data);
+        // console.log('hackathons:', data);
         return data;
     } catch (err) {
         console.error('Fetch error:', err);
         throw err; // Rethrow the error so react-query can handle it
     }
 };
+export const getCurrentCreatedEquipe = async () => {
+    try {
+        const response = await fetch('https://api.jeemacoder.fewnu.app/api/equipe/indexByEquipeDesc', {
+            method: 'POST',
+            headers : {
+                "Authorisation" : `Bearer ${authToken}`
+            }
+        })
+        const data = await response.json()
+        return data
+    }catch(error) {
+        console.error("fetch failed", error);
+        throw error
+    }
+}
 
 export const sendMessage = async (Workspace_id : string) => {
     const options = {
