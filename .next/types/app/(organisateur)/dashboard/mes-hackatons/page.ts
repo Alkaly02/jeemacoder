@@ -1,4 +1,4 @@
-// File: E:\Bakeli\Projet\JeemaCoder\app\jeemacoder-app\jeemacoder-web\app\(organisateur)\dashboard\mes-hackatons\page.tsx
+// File: C:\Users\admin\Desktop\Bakeli-project\jeemacoder\app\(organisateur)\dashboard\mes-hackatons\page.tsx
 import * as entry from '../../../../../../app/(organisateur)/dashboard/mes-hackatons/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

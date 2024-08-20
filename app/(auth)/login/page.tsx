@@ -7,6 +7,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
+const api_url = process.env.NEXT_PUBLIC_BACKEND_URL_API;
+console.log(`${api_url}/api/login`);
+
 
 type Value = {
   email : string,
@@ -39,7 +42,7 @@ export default function Page() {
     };
 
     try {
-      const res = await axios.post('https://api.jeemacoder.fewnu.app/api/login', formData, {
+      const res = await axios.post(`${api_url}/login`, formData, {
         headers: {
           "Content-Type": "application/json",
         },

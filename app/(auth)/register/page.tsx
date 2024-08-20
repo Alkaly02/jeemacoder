@@ -8,6 +8,7 @@ import Link from "next/link";
 import { ChangeEvent, Suspense, useState } from "react";
 import { Undo2 } from "lucide-react";
 import { useRouter } from "next/navigation";
+const api_url = process.env.NEXT_PUBLIC_BACKEND_URL_API;
 
 type Value = {
   firstname: string;
@@ -62,7 +63,7 @@ const Form = () => {
     formData.append("role", role!);
 
     axios
-      .post("https://api.jeemacoder.fewnu.app/api/register", formData, {
+      .post( `${api_url}/register` , formData, {
         headers: {
           "Content-Type": "application/json",
         },
