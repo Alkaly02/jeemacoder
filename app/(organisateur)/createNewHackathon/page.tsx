@@ -11,6 +11,7 @@ import Image from "next/image";
 import { Undo2, Upload } from "lucide-react";
 import Link from "next/link";
 import { Modal, YesOrNoModal } from "@/components/modal";
+import { api_url } from "@/app/utils/api/api_url";
 
 let authToken: string | null = null;
 if (typeof window !== "undefined") {
@@ -47,7 +48,7 @@ export default function Page() {
     
     const mutation = useMutation({
         mutationFn: async (formData: FormData) => {
-            const response = await fetch(`{api_url}/hackathons/create', {
+            const response = await fetch(`${api_url}/hackathons/create`, {
                 method: 'POST',
                 headers: {
                     "Authorization": `Bearer ${authToken}`
