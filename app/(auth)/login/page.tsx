@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
-const api_url = process.env.NEXT_PUBLIC_BACKEND_URL_API;
+const api_url = process.env.NEXT_PUBLIC_BACKEND_URL;
 console.log(`${api_url}/api/login`);
 
 
@@ -42,7 +42,7 @@ export default function Page() {
     };
 
     try {
-      const res = await axios.post(`${api_url}/login`, formData, {
+      const res = await axios.post(`${api_url}/api/login`, formData, {
         headers: {
           "Content-Type": "application/json",
         },
