@@ -25,7 +25,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     <aside className="w-64  bg-gray-200 border-r border-gray-300 overflow-y-hidden">
                         <SideBar />
                     </aside>
-                    <div className="flex-1 bg-gray-100 overflow-hidden">
+                    <div className="flex-1 bg-gray-100 overflow-auto">
                         {children}
                     </div>
                 </main>

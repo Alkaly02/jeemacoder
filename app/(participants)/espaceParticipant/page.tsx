@@ -34,7 +34,7 @@ export default function Page() {
 
                 if (result1 && result1.hackathon_id) {
                     const result = await getUserHackathon(result1.hackathon_id);
-                    console.log('Result from getUserHackathon: ', result);
+                    console.log('Result from getUserHackathon 1: ', result);
                     setData(result);
                 } else {
                     console.log('No hackathon_id found in result1');

@@ -51,7 +51,7 @@ export const getUserIndividuel = async (Individuel_id : string) => {
 export const getCurrentCreatedEquipe = async () => {
     try {
         const response = await fetch(`${api_url}/equipe/indexByEquipeDesc`, {
-            method: 'POST',
+            method: 'GET',
             headers : {
                 "Authorisation" : `Bearer ${authToken}`
             }
@@ -64,21 +64,23 @@ export const getCurrentCreatedEquipe = async () => {
     }
 }
 
-export const sendMessage = async (Workspace_id : string) => {
+export const sendMessage = async (workspaceId: string, messageContent: string) => {
     const options = {
         method: "POST",
         headers: {
-            "accept": "application/json",
-            "Authorization": `Bearer ${authToken}`
-        }
+            "Accept": "application/json",
+            "Authorization": `Bearer ${authToken}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ contenu: messageContent }) // Envoi du contenu du message
     };
     try {
-        const response = await fetch(`${api_url}/sendMessage_in/${Workspace_id}`, options);
+        const response = await fetch(`${api_url}/sendMessage_in/${workspaceId}`, options);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        console.log('hackathons:', data);
+        console.log('sendMessage:', data);
         return data;
     } catch (err) {
         console.error('Fetch error:', err);
@@ -86,9 +88,11 @@ export const sendMessage = async (Workspace_id : string) => {
     }
 };
 
+
+
 export const getAllMessageByWorkspaceId = async (Workspace_id : string) => {
     const options = {
-        method: "POST",
+        method: "GET",
         headers: {
             "accept": "application/json",
             "Authorization": `Bearer ${authToken}`
@@ -100,7 +104,51 @@ export const getAllMessageByWorkspaceId = async (Workspace_id : string) => {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        console.log('hackathons:', data);
+        console.log('AllMessageByWorkspaceId:', data);
+        return data;
+    } catch (err) {
+        console.error('Fetch error:', err);
+        throw err;
+    }
+};
+
+export const getWorkspaceByIdIndividuel = async (Individu_id : string) => {
+    const options = {
+        method: "GET",
+        headers: {
+            "accept": "application/json",
+            "Authorization": `Bearer ${authToken}`
+        }
+    };
+    try {
+        const response = await fetch(`${api_url}/indiv/workspace/indexByIdIndividuel/${Individu_id}`, options);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log('WorkspaceByIdIndividuel:', data);
+        return data;
+    } catch (err) {
+        console.error('Fetch error:', err);
+        throw err;
+    }
+};
+
+export const getWorkspaceByIdEquipe = async (Equipe_id : string) => {
+    const options = {
+        method: "GET",
+        headers: {
+            "accept": "application/json",
+            "Authorization": `Bearer ${authToken}`
+        }
+    };
+    try {
+        const response = await fetch(`${api_url}/indiv/workspace/indexByIdEquipe/${Equipe_id}`, options);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log('WorkspaceByIdEquipe:', data);
         return data;
     } catch (err) {
         console.error('Fetch error:', err);

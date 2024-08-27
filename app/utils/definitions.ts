@@ -72,3 +72,13 @@ export type ParticipantsResponse = {
     created_at: string;
     updated_at: string;
 }
+
+export type EspaceTravail = {
+    id: string;
+    name:string;
+    type_espace:'equipe' | 'individuel';
+    individu_id:string;
+    equipe_id:string;
+    created_at: string;
+    updated_at: string;
+}
