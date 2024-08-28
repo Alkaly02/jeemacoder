@@ -10,7 +10,6 @@ import { getTags } from "@/app/utils/api/data"
 import { ListItem } from "../regular_list"
 
 
-
     export const HackathonCard = ({hackathons , onClick , } : {hackathons : {
     logo_url : string , 
     date_debut : string,

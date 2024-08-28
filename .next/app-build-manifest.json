@@ -16,55 +16,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
     ],
-    "/_not-found/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
-    ],
-    "/(auth)/login/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(auth)/login/page.js"
-    ],
-    "/(participants)/espaceParticipant/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(participants)/espaceParticipant/page.js"
-    ],
-    "/(participants)/espaceParticipant/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(participants)/espaceParticipant/layout.js"
-    ],
-    "/(participants)/espaceParticipant/Chat/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(participants)/espaceParticipant/Chat/page.js"
-    ],
-    "/(auth)/user_role/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(auth)/user_role/page.js"
-    ],
-    "/(auth)/register/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(auth)/register/page.js"
-    ],
     "/listhackathons/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/listhackathons/page.js"
     ],
-    "/(participants)/espaceParticipant/tableau/page": [
+    "/listhackathons/[...details]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(participants)/espaceParticipant/tableau/page.js"
-    ],
-    "/(participants)/espaceParticipant/Ressource/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(participants)/espaceParticipant/Ressource/page.js"
+      "static/chunks/app/listhackathons/[...details]/page.js"
     ]
   }
 }

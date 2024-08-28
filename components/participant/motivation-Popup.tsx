@@ -41,51 +41,21 @@ const mutation = useMutation({
         setEquipeName('')
     }
 })
-const {data, isLoading, isError} = useQuery({
-    queryFn: async () => await getCurrentCreatedEquipe(),
-    queryKey: ['equipeId']
-})
-console.log("equipe id", typeof(data));
 
-const mutationMenbreEquipe = useMutation({
-    mutationFn : async (formData : BodyInit) => {
-        return await fetch(`${api_url}/membre/add` , {
-            method : 'POST',
-            headers : {
-                "Contente-type" : "Application/json",
-                "authorization" : `Bearer ${authToken} ` 
-            },
-            body : formData ,
-            
-        })
-        .then((res) => console.log( res.ok , "demande envoyé" && "demande envoyé" , res ))
-        .catch((error) => console.log(error))
-    }, onSuccess : () => {
-        setMotivation("")
-        setEquipeName('')
-    }
-})
-const user: User | null = useContext(UserContext)
 const handleSubmit = (e : ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData() ;
-    const formDataMenbreEquipe = new FormData()
 
-            formData.append('status' , "en attente")
+            formData.append('status' , "attente")
             formData.append('motivation' , motivation)
             formData.append('hackathon_id' , hackathon_id)
             if(equipeDeja){
                 formData.append('name' ,  equipeName )
             }
-            
-            formDataMenbreEquipe.append('type_member' , 'chef')
-            formDataMenbreEquipe.append('equipe_id' , JSON.stringify(user?.id))
-
-            mutation.mutate( formData )
-            mutationMenbreEquipe.mutate(formDataMenbreEquipe)
+            mutation.mutate(formData);
             
             // for(let [key , value] of formData.entries()) {
-                // console.log(`${key} : ${value}`)}
+            // console.log(`${key} : ${value}`)}
     }
         
         
