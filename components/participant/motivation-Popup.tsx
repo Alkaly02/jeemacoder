@@ -25,7 +25,7 @@ if (typeof window !== "undefined") {
 
 const mutation = useMutation({
     mutationFn : async (formData : BodyInit) => {
-        return await fetch( !equipeDeja ? `${api_url}/api/indiv/create` : `${api_url}/equipe/create` , {
+        return await fetch( !equipeDeja ? `${api_url}/indiv/create` : `${api_url}/equipe/create` , {
             method : 'POST',
             headers : {
                 "Contente-type" : "Application/json",

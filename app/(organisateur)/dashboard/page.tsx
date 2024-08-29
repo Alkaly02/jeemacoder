@@ -66,7 +66,7 @@ export default function Page() {
                     {isError && <div>Fetching data failed</div>}
                 </div>
             </div>
-            <HackathonTable />
+            {/* <HackathonTable /> */}
         </div>
     );
 }

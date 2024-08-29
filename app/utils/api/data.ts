@@ -252,7 +252,32 @@ export const rejectParticipantEquipe = async (id: string) => {
     return response.json();
 };
 
-export const createWorkspace = async (name: string, type_espace: string, equipe_id: string) => {
+export const createWorkspaceIndividu = async (name: string, type_espace: string, individu_id: string) => {
+    const options = {
+        method: "POST",
+        headers: {
+            "accept": "application/json",
+            "Authorization": `Bearer ${authToken}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, type_espace, individu_id }),
+    };
+    try {
+        const response = await fetch(`${api_url}/workspace/add`, options);
+        if (!response.ok) {
+            const errorText = await response.text(); // Lire le texte de la réponse d'erreur
+            throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorText}`);
+        }
+        const data = await response.json();
+        console.log('Workspace created:', data);
+        return data;
+    } catch (err) {
+        console.error('Erreur lors de la création de l\'espace de travail:', err);
+        throw err;
+    }
+};
+
+export const createWorkspaceEquipe = async (name: string, type_espace: string, equipe_id: string) => {
     const options = {
         method: "POST",
         headers: {

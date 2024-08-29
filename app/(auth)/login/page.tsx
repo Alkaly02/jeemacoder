@@ -24,7 +24,8 @@ export default function Page() {
     remember : false
   })
   
-
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [error , setError] = useState<{[key : string]: string}>({})
   console.log(error);
   
@@ -50,6 +51,7 @@ export default function Page() {
       });
       
       if (res.data.token) {
+        setSuccessMessage("Connexion réussie! Vous serez redirigé vers Votre dahboard.");
         localStorage.setItem('authToken', res.data.token);
         console.log("success! you are connected", res.data);
         if(res.data.Utilisateur.role === "organisateur"){
@@ -58,6 +60,8 @@ export default function Page() {
           router.replace('/espaceParticipant');
         }
       
+      }else{
+        setErrorMessage("Une erreur est survenue. Veuillez vérifier vos informations et réessayer.");
       }
     } catch (error) {
       setError({genrale : ' désolé , les information que vous avez ajouté sont incorrect'});
@@ -113,7 +117,8 @@ export default function Page() {
         </Link>
       </div>
     </div>
-
+    {successMessage && <div className="mt-4 text-green-600">{successMessage}</div>}
+    {errorMessage && <div className="mt-4 text-red-600">{errorMessage}</div>}
   </form>
   </div>
   <div className="w-full md:w-1/2 mt-4 md:mt-0">

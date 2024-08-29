@@ -1,5 +1,7 @@
 {
-  "/page": "app/page.js",
   "/listhackathons/page": "app/listhackathons/page.js",
-  "/listhackathons/[...details]/page": "app/listhackathons/[...details]/page.js"
+  "/listhackathons/[...details]/page": "app/listhackathons/[...details]/page.js",
+  "/(organisateur)/dashboard/page": "app/(organisateur)/dashboard/page.js",
+  "/(organisateur)/dashboard/mes-hackatons/page": "app/(organisateur)/dashboard/mes-hackatons/page.js",
+  "/(organisateur)/dashboard/mes-hackatons/[...details]/page": "app/(organisateur)/dashboard/mes-hackatons/[...details]/page.js"
 }

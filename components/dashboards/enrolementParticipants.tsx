@@ -1,6 +1,6 @@
 import { Cross1Icon, CheckIcon } from "@radix-ui/react-icons";
 import { useState, useEffect } from "react";
-import { getParticipants, approveParticipant, rejectParticipant, approveParticipantEquipe, rejectParticipantEquipe, createWorkspace } from "@/app/utils/api/data";
+import { getParticipants, approveParticipant, rejectParticipant, approveParticipantEquipe, rejectParticipantEquipe, createWorkspaceEquipe, createWorkspaceIndividu } from "@/app/utils/api/data";
 import { Individuel, Equipe, ParticipantsResponse, Participant } from '@/app/utils/definitions';
 import Image from "next/image";
 
@@ -85,11 +85,11 @@ export const EnrolementParticipants: React.FC<Props> = ({ hackathonId }) => {
                     console.log('Name : ', name);
                     console.log('typeEspace : ', type);
                     console.log('Participant ID : ', id);
-                    await createWorkspace(name, 'individuel', id);
+                    await createWorkspaceIndividu(name, 'individuel', id);
                 } else if (type === 'Équipe') {
                     await approveParticipantEquipe(id);
                     console.log('Participant ID : ', id);
-                    await createWorkspace('cgfg', 'equipe', id);
+                    await createWorkspaceEquipe('Equipe1', 'equipe', id);
                 }
             } else {
                 if (type === 'Solo') {
